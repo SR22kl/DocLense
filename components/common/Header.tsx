@@ -124,18 +124,18 @@ export default function Header() {
             {/* </SignInButton> */}
 
             {/* Clerk Auth Controls */}
-            <div className="hidden md:flex items-center gap-4 ml-4 pl-4 border-l border-gray-300 ">
+            <div className="hidden md:flex items-center gap-2 ml-4 pl-4 border-l border-gray-300 ">
               <Show when="signed-out">
-                <SignInButton mode="modal">
+                <Link href="/sign-in">
                   <button className="px-2 py-1 text-[14px] text-blue-600 border border-blue-600 rounded hover:bg-blue-50 transition-colors">
                     Sign In
                   </button>
-                </SignInButton>
-                <SignUpButton mode="modal">
+                </Link>
+                <Link href="/sign-up">
                   <button className="px-2 py-1 text-[14px] bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
                     Sign Up
                   </button>
-                </SignUpButton>
+                </Link>
               </Show>
               <Show when="signed-in">
                 <div className="flex items-center gap-1">
@@ -214,24 +214,20 @@ export default function Header() {
                             href="/sign-in"
                             onClick={() => setIsOpen(false)}
                           >
-                            <SignInButton mode="modal">
-                              <button className="w-full px-2 py-1 text-[14px] text-blue-600 border border-blue-600 rounded hover:bg-blue-50 transition-colors flex items-center justify-center gap-1">
-                                <LogIn className="h-4 w-4" />
-                                <span>Sign In</span>
-                              </button>
-                            </SignInButton>
+                            <button className="w-full px-2 py-1 text-[14px] text-blue-600 border border-blue-600 rounded hover:bg-blue-50 transition-colors flex items-center justify-center gap-1">
+                              <LogIn className="h-4 w-4" />
+                              <span>Sign In</span>
+                            </button>
                           </Link>
 
                           <Link
                             href="/sign-up"
                             onClick={() => setIsOpen(false)}
                           >
-                            <SignUpButton mode="modal">
-                              <button className="w-full px-2 py-1 text-[14px] bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors flex items-center justify-center gap-1">
-                                <UserPlus className="h-4 w-4" />
-                                <span>Sign Up</span>
-                              </button>
-                            </SignUpButton>
+                            <button className="w-full px-2 py-1 text-[14px] bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors flex items-center justify-center gap-1">
+                              <UserPlus className="h-4 w-4" />
+                              <span>Sign Up</span>
+                            </button>
                           </Link>
                         </Show>
                       </div>

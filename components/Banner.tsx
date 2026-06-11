@@ -24,7 +24,11 @@ const Banner = () => {
               </Button>
             </Link>
             <Link href="/sign-in">
-              <Button size="lg" variant="outline" className="px-8 rounded-md text-md">
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-8 rounded-md text-md"
+              >
                 Sign In
               </Button>
             </Link>

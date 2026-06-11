@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import { syncUserToDatabase } from "@/lib/sync-user";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,11 +13,12 @@ export const metadata: Metadata = {
   description: "Analyze & summarize documents with Google Gemini AI",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  await syncUserToDatabase();
   return (
     <>
       <ClerkProvider afterSignOutUrl="/">
