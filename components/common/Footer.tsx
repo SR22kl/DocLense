@@ -36,8 +36,8 @@ export default function Footer() {
     },
     {
       icon: <SiX className="h-5 w-5" />,
-      href: "https://twitter.com",
-      label: "Twitter",
+      href: "https://x.com/",
+      label: "X",
     },
     {
       icon: <Mail className="h-5 w-5" />,
@@ -99,7 +99,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-600 mb-4 md:mb-0">
-            © {currentYear} DocuAI. All rights reserved.
+            © {currentYear} DoLense. All rights reserved.
           </div>
           <div className="flex gap-6 text-sm text-gray-600">
             <Link href="/privacy" className="hover:text-gray-900">
