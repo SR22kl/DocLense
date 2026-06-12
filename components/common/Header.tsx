@@ -50,7 +50,7 @@ export default function Header() {
         ...baseItems,
         {
           href: `/${organization.slug}`,
-          label: "Organization Dashboard",
+          label: "Org Dashboard",
           icon: <Building className="h-4 w-4" />,
         },
         {
