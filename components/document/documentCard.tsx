@@ -1,4 +1,3 @@
-// components/document-card.tsx
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -61,7 +60,7 @@ export function DocumentCard({
   return (
     <div className="border rounded-lg p-6 hover:shadow-lg transition-all">
       <div className="flex items-start justify-between">
-        {/* Left Column: Document Info */}
+        {/* Left Side: Document Info */}
         <div className="flex items-start gap-4 flex-1">
           <div className="p-3 rounded-lg bg-blue-100">
             <FileText className="h-6 w-6 text-blue-600" />
@@ -89,7 +88,7 @@ export function DocumentCard({
                 </div>
               </div>
               {doc.sentiment && (
-                <Badge>
+                <Badge className="rounded-full px-3 py-2.5">
                   <div className="flex items-center gap-1">
                     <span className="capitalize">{doc.sentiment}</span>
                   </div>
@@ -164,7 +163,7 @@ export function DocumentCard({
           </div>
         </div>
 
-        {/* Right Column: Actions */}
+        {/* Right Side: Actions */}
         <div className="flex flex-col gap-2 ml-4">
           {/* Download Button */}
           {doc.fileUrl && (
@@ -173,9 +172,9 @@ export function DocumentCard({
               size="sm"
               onClick={() => window.open(doc.fileUrl, "_blank")}
               title="Download"
-              className="justify-start"
+              className="justify-start rounded"
             >
-              <Download className="h-4 w-4 mr-2" />
+              <Download className="h-4 w-4 mr-2 cursor-pointer" />
               Download
             </Button>
           )}
@@ -192,7 +191,7 @@ export function DocumentCard({
                 onAnalysisTypeChange(value)
               }
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full rounded">
                 <SelectValue>
                   <div className="flex items-center gap-2">
                     {getAnalysisIcon(selectedAnalysisType)}
@@ -221,7 +220,7 @@ export function DocumentCard({
               size="sm"
               onClick={() => onAnalyze(doc.id)}
               disabled={isAnalyzing}
-              className="justify-start w-full"
+              className="justify-start w-full bg-gray-800 text-gray-200 hover:bg-gray-900 hover:text-gray-300 rounded cursor-pointer"
             >
               {isAnalyzing ? (
                 <>
@@ -241,7 +240,7 @@ export function DocumentCard({
           <Button
             variant="ghost"
             size="sm"
-            className="text-red-600 hover:text-red-700 hover:bg-red-50 justify-start"
+            className="text-red-400 hover:text-red-500 bg-gray-800 hover:bg-gray-900 rounded justify-start cursor-pointer"
             onClick={() => onDelete(doc.id)}
           >
             <Trash2 className="h-4 w-4 mr-2" />

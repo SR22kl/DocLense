@@ -67,16 +67,28 @@ const OrgDashboardPage = async ({ params }: OrgDashboardPageProps) => {
   return (
     <>
       <div className="space-y-8">
-        <div>
-          <h1 className="text-3xl font-bold">{organization.name} Dashboard</h1>
-          <p className="text-gray-600">
-            Welcome to your organization workspace
-          </p>
+        <div className="relative overflow-hidden rounded-3xl border bg-linear-to-br from-blue-50 via-white to-indigo-50 p-10 shadow-xl">
+          <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-blue-400/20 blur-3xl" />
+          <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-indigo-400/20 blur-3xl" />
+
+          <div className="relative">
+            <span className="rounded-full border bg-white px-4 py-1 text-sm">
+              🚀 Workspace Dashboard
+            </span>
+
+            <h1 className="mt-4 text-5xl font-bold tracking-tight">
+              {organization.name}
+            </h1>
+
+            <p className="mt-3 text-lg text-muted-foreground">
+              Manage documents, team members and AI-powered insights.
+            </p>
+          </div>
         </div>
 
         {/* Stats */}
         <div className="grid md:grid-cols-3 gap-6">
-          <Card className="rounded-md">
+          <Card className="rounded-3xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out hover:-translate-y-1">
             <CardHeader>
               <CardTitle className="text-lg">Total Documents</CardTitle>
               <CardDescription>In this organization</CardDescription>
@@ -98,7 +110,7 @@ const OrgDashboardPage = async ({ params }: OrgDashboardPageProps) => {
             </CardContent>
           </Card>
 
-          <Card className="rounded-md">
+          <Card className="rounded-3xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out hover:-translate-y-1">
             <CardHeader>
               <CardTitle className="text-lg">Team Members</CardTitle>
               <CardDescription>Organization members</CardDescription>
@@ -114,7 +126,7 @@ const OrgDashboardPage = async ({ params }: OrgDashboardPageProps) => {
             </CardContent>
           </Card>
 
-          <Card className="rounded-md">
+          <Card className="rounded-3xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out hover:-translate-y-1">
             <CardHeader>
               <CardTitle className="text-lg">Analyzed</CardTitle>
               <CardDescription>Documents with AI insights</CardDescription>
@@ -132,8 +144,7 @@ const OrgDashboardPage = async ({ params }: OrgDashboardPageProps) => {
         </div>
 
         {/* Recent Documents */}
-
-        <Card className="rounded-md">
+        <Card className="rounded-3xl border-0 bg-white/80 backdrop-blur shadow-xl">
           <CardHeader>
             <CardTitle>Recent Documents</CardTitle>
             <CardDescription>
@@ -142,15 +153,16 @@ const OrgDashboardPage = async ({ params }: OrgDashboardPageProps) => {
           </CardHeader>
           <CardContent>
             {organization.documents.length === 0 ? (
-              <div className="text-center py-8">
-                <FileText className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-600 mb-4">No documents uploaded yet</p>
-                <Link href={`/${orgSlug}/documents`}>
-                  <Button className="rounded-md bg-linear-to-r from-blue-500 to-indigo-500 cursor-pointer opacity-90 hover:opacity-100">
-                    <Upload className="h-4 w-4 mr-2" />
-                    Upload First Document
-                  </Button>
-                </Link>
+              <div className="text-center py-20">
+                <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-3xl bg-blue-50">
+                  <FileText className="h-12 w-12 text-blue-500" />
+                </div>
+
+                <h3 className="text-xl font-semibold">No documents yet</h3>
+
+                <p className="mt-2 text-muted-foreground">
+                  Upload your first document and start generating AI insights.
+                </p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -160,7 +172,9 @@ const OrgDashboardPage = async ({ params }: OrgDashboardPageProps) => {
                     className="flex items-center justify-between p-4 border rounded-lg"
                   >
                     <div className="flex items-center gap-3">
-                      <FileText className="h-5 w-5 text-gray-400" />
+                      <div className="h-12 w-12 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                        <FileText className="h-5 w-5 text-gray-200" />
+                      </div>
                       <div>
                         <p className="font-medium">{doc.name}</p>
                         <p className="text-sm text-gray-500">

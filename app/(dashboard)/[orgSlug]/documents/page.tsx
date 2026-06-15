@@ -145,7 +145,7 @@ const DocumentsPage = () => {
         {/* Stats Bar */}
         {documents.length > 0 && !isLoading && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card>
+            <Card className="rounded-md">
               <CardContent className="pt-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold">{documents.length}</div>
@@ -154,7 +154,7 @@ const DocumentsPage = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="rounded-md">
               <CardContent className="pt-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-green-600">
@@ -165,7 +165,7 @@ const DocumentsPage = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="rounded-md">
               <CardContent className="pt-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold">

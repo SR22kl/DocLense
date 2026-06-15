@@ -38,27 +38,46 @@ export default async function OrgLayout({ children, params }: OrgLayoutProps) {
     <>
       <div className="min-h-screen bg-gray-50">
         {/* Organization Banner */}
-        <Card className="w-full shadow-sm border rounded-md">
-          <CardContent>
+        <Card className="relative overflow-hidden rounded-3xl border-0 bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-xl">
+          {/* Decorative glow */}
+          <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-blue-500/20 blur-3xl" />
+          <div className="absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-purple-500/20 blur-3xl" />
+
+          <CardContent className="relative p-8">
             <div className="flex items-center justify-between">
-              <div className="space-y-1">
-                <h1 className="text-2xl font-semibold tracking-tight">
+              <div>
+                <div className="mb-2 flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-emerald-400" />
+                  <span className="text-xs uppercase tracking-widest text-slate-300">
+                    Organization Workspace
+                  </span>
+                </div>
+
+                <h1 className="text-4xl font-bold tracking-tight">
                   {organization.name}
                 </h1>
-                <p className="text-sm text-muted-foreground">
-                  Organization workspace
+
+                <p className="mt-2 text-slate-300">
+                  Collaborate, manage documents, and streamline workflows.
                 </p>
               </div>
+
               <Badge
-                variant="outline"
-                className="px-4 py-2 font-medium rounded"
+                className="
+          border-white/20
+          bg-white/10
+          px-4
+          py-2
+          text-white
+          backdrop-blur-sm
+          hover:bg-white/20
+        "
               >
                 {membership.role}
               </Badge>
             </div>
           </CardContent>
         </Card>
-
         {/* Main Content */}
         <main className="py-8">
           <div className="container mx-auto px-4">{children}</div>
