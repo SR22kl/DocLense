@@ -58,8 +58,8 @@ export function DocumentCard({
   };
 
   return (
-    <div className="border rounded-lg p-6 hover:shadow-lg transition-all">
-      <div className="flex items-start justify-between">
+    <div className="border rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all">
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
         {/* Left Side: Document Info */}
         <div className="flex items-start gap-4 flex-1">
           <div className="p-3 rounded-lg bg-blue-100">
@@ -69,18 +69,20 @@ export function DocumentCard({
             {/* Document Header */}
             <div className="flex items-start justify-between mb-3">
               <div>
-                <h3 className="font-semibold text-lg mb-1">{doc.name}</h3>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span className="flex items-center gap-1">
+                <h3 className="font-semibold text-sm md:text-lg mb-1 truncate max-w-62.5 md:max-w-100">
+                  {doc.name}
+                </h3>
+                <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+                  <span className="flex items-center text-xs md:text-sm gap-1">
                     <User className="h-3 w-3" />
                     {doc.user.name || doc.user.email}
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center gap-1 text-xs md:text-sm">
                     <Calendar className="h-3 w-3" />
                     {new Date(doc.createdAt).toLocaleDateString()}
                   </span>
                   {doc.fileSize && (
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1 text-xs md:text-sm">
                       <File className="h-3 w-3" />
                       {formatFileSize(doc.fileSize)}
                     </span>
@@ -88,9 +90,9 @@ export function DocumentCard({
                 </div>
               </div>
               {doc.sentiment && (
-                <Badge className="rounded-full px-3 py-2.5">
+                <Badge className="rounded-full px-2 py-1 md:px-3 md:py-2.5">
                   <div className="flex items-center gap-1">
-                    <span className="capitalize">{doc.sentiment}</span>
+                    <span className="text-xs md:text-sm">{doc.sentiment}</span>
                   </div>
                 </Badge>
               )}
@@ -98,7 +100,7 @@ export function DocumentCard({
 
             {/* AI Analysis Section */}
             {doc.aiSummary && (
-              <div className="mt-4 p-4 bg-linear-to-r from-gray-50 to-blue-50 rounded-lg border">
+              <div className="mt-4 p-4 overflow-hidden bg-linear-to-r from-gray-50 to-blue-50 rounded-lg border">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <Brain className="h-5 w-5 text-green-600" />
@@ -140,12 +142,12 @@ export function DocumentCard({
                       <Tag className="h-4 w-4 text-gray-500" />
                       <span className="text-sm font-medium">Key Topics</span>
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 max-w-full">
                       {doc.aiKeywords.slice(0, 8).map((keyword, idx) => (
                         <Badge
                           key={idx}
                           variant="secondary"
-                          className="px-3 py-1"
+                          className="px-3 py-1 break-all"
                         >
                           {keyword}
                         </Badge>
@@ -162,9 +164,8 @@ export function DocumentCard({
             )}
           </div>
         </div>
-
         {/* Right Side: Actions */}
-        <div className="flex flex-col gap-2 ml-4">
+        <div className="flex flex-col gap-2 w-full lg:w-auto shrink-0">
           {/* Download Button */}
           {doc.fileUrl && (
             <Button
