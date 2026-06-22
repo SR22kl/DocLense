@@ -1,15 +1,18 @@
 import { deleteFromBlob } from "@/lib/blob";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 interface RouteParams {
   params: Promise<{ documentId: string }>;
 }
 
-export async function DELETE({ params }: RouteParams) {
+export async function DELETE(
+  request: NextRequest,
+  context: { params: Promise<{ documentId: string }> },
+) {
   try {
-    const { documentId } = await params;
+    const { documentId } = await context.params;
     const { userId } = await auth();
 
     if (!userId) {
