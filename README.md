@@ -82,13 +82,66 @@ DocLense is a Next.js application that lets users upload documents, manage organ
 
 ## Project Structure
 
-- `app/` - Next.js application routes and pages
-- `app/api/` - API routes for documents, organizations, and analysis
-- `components/` - UI components and document/upload helpers
-- `lib/` - helper utilities for Prisma, cloud storage, and AI
-- `prisma/` - database schema and migration files
-- `preview/` - project preview images used in this README
-- `public/` - static assets
+```text
+DocLense/
+├── app/
+│   ├── (auth)/
+│   │   ├── sign-in/
+│   │   │   └── [[...sign-in]]/page.tsx
+│   │   └── sign-up/
+│   │       └── [[...sign-up]]/page.tsx
+│   ├── (dashboard)/
+│   │   ├── layout.tsx
+│   │   ├── [orgSlug]/
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   └── documents/page.tsx
+│   ├── (root)/page.tsx
+│   ├── api/
+│   │   ├── analyze/route.ts
+│   │   ├── documents/route.ts
+│   │   ├── documents/[documentId]/route.ts
+│   │   └── organizations/route.ts
+│   ├── data/data.ts
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── favicon.ico
+├── components/
+│   ├── Banner.tsx
+│   ├── Cta.tsx
+│   ├── Features.tsx
+│   ├── Hiworks.tsx
+│   ├── document/
+│   │   ├── documentCard.tsx
+│   │   └── docUploadDialog.tsx
+│   ├── common/
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   └── LogoIcon.tsx
+│   └── ui/ (shadcn UI primitives)
+├── lib/
+│   ├── blob.ts
+│   ├── gemini.ts
+│   ├── prisma.ts
+│   ├── sync-user.ts
+│   └── utils.ts
+├── prisma/
+│   ├── schema.prisma
+│   └── migrations/
+├── preview/
+│   ├── pre-1.png
+│   ├── pre-2.png
+│   ├── pre-3.png
+│   └── pre-4.png
+├── public/
+├── types/
+│   └── index.ts
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+├── postcss.config.mjs
+└── README.md
+```
 
 ## Setup Instructions
 
