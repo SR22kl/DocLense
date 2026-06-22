@@ -1,36 +1,197 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DocLense
 
-## Getting Started
+> A modern document management and analysis app built with Next.js, Clerk auth, Prisma, PostgreSQL, and Google Generative AI.
 
-First, run the development server:
+## Preview
+
+![DocLense Preview 1](preview/pre-1.png)
+
+![DocLense Preview 2](preview/pre-2.png)
+
+![DocLense Preview 3](preview/pre-3.png)
+
+![DocLense Preview 4](preview/pre-4.png)
+
+## Project Overview
+
+DocLense is a Next.js application that lets users upload documents, manage organizations, and analyze document content using AI-powered generation. It uses secure authentication, PostgreSQL-backed persistence, and cloud storage for document assets.
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- React 19 + TypeScript
+- Tailwind CSS v4
+- Prisma ORM
+- PostgreSQL database
+- Clerk authentication
+- Google Generative AI (`@google/generative-ai`)
+- Vercel Blob storage
+- Shadcn UI with Radix primitives
+- Framer Motion animations
+- Sonner toast notifications
+
+## Primary Packages
+
+### Dependencies
+
+- `next`
+- `react`
+- `react-dom`
+- `typescript`
+- `@clerk/nextjs`
+- `@google/generative-ai`
+- `@vercel/blob`
+- `@prisma/client`
+- `@prisma/adapter-pg`
+- `pg`
+- `tailwindcss`
+- `@tailwindcss/postcss`
+- `shadcn`
+- `radix-ui`
+- `framer-motion`
+- `lucide-react`
+- `@phosphor-icons/react`
+- `react-icons`
+- `react-markdown`
+- `clsx`
+- `class-variance-authority`
+- `next-themes`
+- `tailwind-merge`
+- `tw-animate-css`
+- `sonner`
+- `dotenv`
+
+### Dev Dependencies
+
+- `eslint`
+- `eslint-config-next`
+- `prisma`
+- `tsx`
+- `@types/node`
+- `@types/react`
+- `@types/react-dom`
+- `@types/pg`
+
+## Services Required
+
+- Clerk (authentication)
+- Google Cloud Generative AI API
+- PostgreSQL database
+- Vercel or another hosting provider for deployment
+- Optional: Vercel storage / blob support
+
+## Project Structure
+
+- `app/` - Next.js application routes and pages
+- `app/api/` - API routes for documents, organizations, and analysis
+- `components/` - UI components and document/upload helpers
+- `lib/` - helper utilities for Prisma, cloud storage, and AI
+- `prisma/` - database schema and migration files
+- `preview/` - project preview images used in this README
+- `public/` - static assets
+
+## Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone <repo-url>
+cd DocLense
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Create environment variables
+
+Create a `.env` file in the project root with the following values:
+
+```env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+CLERK_FRONTEND_API=<your-clerk-frontend-api>
+CLERK_API_KEY=<your-clerk-api-key>
+CLERK_JWT_KEY=<your-clerk-jwt-key>
+GOOGLE_API_KEY=<your-google-gen-ai-api-key>
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<your-clerk-publishable-key>
+NEXT_PUBLIC_CLOUD_STORAGE_BUCKET=<your-storage-bucket>
+```
+
+> Replace the placeholder values with your own PostgreSQL and service credentials.
+
+### 4. Configure Clerk
+
+1. Sign up for Clerk and create a new application.
+2. Add the redirect URL for local development, typically `http://localhost:3000/*`.
+3. Copy the frontend API key, API key, and JWT key into `.env`.
+
+### 5. Configure Google Generative AI
+
+1. Enable the Google Cloud Generative AI API.
+2. Create credentials and add the API key to `.env`.
+3. Confirm the project has permissions to call the generative AI models.
+
+### 6. Configure PostgreSQL
+
+1. Create a PostgreSQL database.
+2. Set `DATABASE_URL` in `.env`.
+3. Run Prisma migrations to initialize the schema:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+If you already have the schema and want to push without generating a migration:
+
+```bash
+npx prisma db push
+```
+
+### 7. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view DocLense locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 8. Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+- Deploy to Vercel for seamless Next.js support.
+- Set the same environment variables in Vercel.
+- Enable any required build settings for `next build`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- The `app/api/analyze/route.ts` endpoint handles document analysis requests.
+- The `app/api/documents` and `app/api/organizations` routes manage persistence and organization data.
+- The `lib/prisma.ts` file exports the Prisma client instance.
 
-## Deploy on Vercel
+## Useful Commands
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Preview Images
+
+The preview images are stored in the `preview/` folder:
+
+- `preview/pre-1.png`
+- `preview/pre-2.png`
+- `preview/pre-3.png`
+- `preview/pre-4.png`
+
+Use them as a reference for the UI and app flow.
