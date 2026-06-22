@@ -31,6 +31,7 @@ import {
   Building,
   LucideLogOut,
 } from "lucide-react";
+import { LogoIcon } from "./LogoIcon";
 
 export default function Header() {
   const pathname = usePathname();
@@ -83,8 +84,9 @@ export default function Header() {
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/60">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-            <Brain className="h-6 w-6 text-blue-600" />
+          <Link href="/" className="flex items-center gap-1 font-bold text-xl">
+            <LogoIcon className="h-10 w-10" />
+            {/* <Brain className="h-6 w-6 text-blue-600" /> */}
             DocLense
           </Link>
 
